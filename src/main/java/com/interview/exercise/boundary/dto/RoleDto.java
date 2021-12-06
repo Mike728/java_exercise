@@ -1,5 +1,6 @@
-package com.interview.exercise.entities;
+package com.interview.exercise.boundary.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +10,8 @@ public class RoleDto {
 
     private String name;
     private String surname;
-    private  UserDto user;
 
+    @JsonIgnore
+    private UserDto user;
 
 }

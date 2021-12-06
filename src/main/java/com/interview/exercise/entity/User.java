@@ -1,7 +1,5 @@
-package com.interview.exercise.entities;
+package com.interview.exercise.entity;
 
-import com.interview.exercise.Package;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,19 +10,19 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-public class AppUser {
+public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String lastName;
     private String company;
     private LocalDateTime insertTime;
 
-    @OneToOne
-    private Role role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Role> role;
 
-    @ManyToMany
-    public List<Package> aPackage;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Package> packages;
 }
